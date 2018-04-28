@@ -1,0 +1,31 @@
+{
+  "name": "nextjs-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.19.1",
+    "grommet": "^2.0.0-beta.1",
+    "grommet-controls": "^0.25.2",
+    "grommet-icons": "^0.16.0",
+    "isomorphic-unfetch": "^2.0.0",
+    "next": "^5.1.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "styled-components": "^3.2.6"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
+  }
+}
