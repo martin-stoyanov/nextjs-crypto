@@ -14,7 +14,6 @@ class Prices extends React.Component {
   }
 
   render() {
-    const { CURRENCIES } = this.state;
     const { currency } = this.state;
     return (
       <div>
@@ -28,7 +27,6 @@ class Prices extends React.Component {
                 options={currencies}
                 value={currency}  
                 onChange={event => this.setState({
-                  selected: event.selected,
                   currency: event.value,
                 })}/>
             </Box>
