@@ -1,11 +1,13 @@
 import { Box, Table, TableHeader, TableCell, TableBody, TableRow } from 'grommet';
+import {Line} from 'react-chartjs-2';
 
 class HistoricalPrices extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currency: props.currency,
-      sortedBpi: props.btcHist.bpi
+      sortedBpi: props.btcHist.bpi,
+      chartData: []
     };
   }
 
@@ -35,13 +37,43 @@ class HistoricalPrices extends React.Component {
     this.setState({
       sortedBpi: sortedBpi,
     })
+    this.loadChart(sortedBpi);
+  }
+
+  loadChart = (sortedBpi) => {
+    let prices = [];
+    let dates = [];
+    Object.keys(sortedBpi).map((key, index) => (
+      prices[key] = sortedBpi[key][0],
+      dates[key] = sortedBpi[key][1]
+    ))
+    const data = {
+      labels: prices.reverse(),
+      datasets: [
+        {
+          label: 'BTC Price',
+          backgroundColor: 'rgba(0, 169, 255, 0.5)',
+          data: dates.reverse(),
+        }
+      ]
+    }
+    this.setState({
+      chartData: data
+    })
   }
 
   render() {
     const { currency } = this.props;
     let { sortedBpi } = this.state;
+    let { chartData } = this.state;
     return (
       <Box>
+        <Line 
+          data={chartData}
+          options={{
+            maintainAspectRatio: true
+          }}
+        />
         <Table>
           <TableHeader>
             <TableRow>
@@ -58,7 +90,7 @@ class HistoricalPrices extends React.Component {
           ))}
           </TableBody>
         </Table>
-      </Box>
+      </Box>      
     );
   }
 }
