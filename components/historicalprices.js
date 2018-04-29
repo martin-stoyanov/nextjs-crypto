@@ -36,30 +36,22 @@ class HistoricalPrices extends React.Component {
     });
     this.setState({
       sortedBpi: sortedBpi,
-    })
-    this.loadChart(sortedBpi);
+      chartData: this.loadChart(unsortedBpi.bpi),
+    })    
   }
 
-  loadChart = (sortedBpi) => {
-    let prices = [];
-    let dates = [];
-    Object.keys(sortedBpi).map((key, index) => (
-      prices[key] = sortedBpi[key][0],
-      dates[key] = sortedBpi[key][1]
-    ))
+  loadChart = (Bpi) => {
     const data = {
-      labels: prices.reverse(),
+      labels: Object.keys(Bpi),
       datasets: [
         {
           label: 'BTC Price',
           backgroundColor: 'rgba(0, 169, 255, 0.5)',
-          data: dates.reverse(),
+          data: Object.values(Bpi),
         }
       ]
     }
-    this.setState({
-      chartData: data
-    })
+    return data
   }
 
   render() {
