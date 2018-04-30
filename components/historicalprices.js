@@ -63,8 +63,12 @@ class HistoricalPrices extends React.Component {
         <Line 
           data={chartData}
           options={{
-            maintainAspectRatio: true
-          }}
+            maintainAspectRatio: true,
+            animation: {
+ 
+          }
+          }
+        }
         />
         <Table>
           <TableHeader>
