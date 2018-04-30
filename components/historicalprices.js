@@ -1,29 +1,28 @@
 import { Box, Table } from 'grommet';
 import { TableHeader, TableCell, TableBody, TableRow } from 'grommet/components/Table';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
 class HistoricalPrices extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currency: props.currency,
       sortedBpi: props.btcHist.bpi,
-      chartData: []
+      chartData: [],
     };
   }
 
-  //load history prices after componenent mounted
+  // load history prices after componenent mounted
   componentDidMount() {
     this.loadHistory(this.props.currency);
   }
-  //after currency changed, reload data
+  // after currency changed, reload data
   componentWillReceiveProps(newProps) {
     if (newProps.currency !== this.props.currency) {
       this.loadHistory(newProps.currency);
-    } 
+    }
   }
   loadHistory = async (currency) => {
-    //embed currency as string template
+    // embed currency as string template
     const getData = await fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?currency=${currency}`);
     const unsortedBpi = await getData.json();
     const sortedBpi = Object.entries(unsortedBpi.bpi).sort((date1, date2) => {
@@ -36,9 +35,9 @@ class HistoricalPrices extends React.Component {
       return 0;
     });
     this.setState({
-      sortedBpi: sortedBpi,
+      sortedBpi,
       chartData: this.loadChart(unsortedBpi.bpi),
-    })    
+    });
   }
 
   loadChart = (Bpi) => {
@@ -49,25 +48,25 @@ class HistoricalPrices extends React.Component {
           label: 'BTC Price',
           backgroundColor: 'rgba(0, 169, 255, 0.5)',
           data: Object.values(Bpi),
-        }
-      ]
-    }
-    return data
+        },
+      ],
+    };
+    return data;
   }
 
   render() {
     const { currency } = this.props;
-    let { sortedBpi } = this.state;
-    let { chartData } = this.state;
+    const { sortedBpi } = this.state;
+    const { chartData } = this.state;
     return (
       <Box>
-        <Line 
+        <Line
           data={chartData}
           options={{
             maintainAspectRatio: true,
             animation: {
- 
-          }
+
+          },
           }
         }
         />
@@ -87,7 +86,7 @@ class HistoricalPrices extends React.Component {
           ))}
           </TableBody>
         </Table>
-      </Box>      
+      </Box>
     );
   }
 }

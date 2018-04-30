@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Box, Button, Heading } from 'grommet';
+import { Box, Button } from 'grommet';
 
 const Footer = () => (
   <Box direction='row' pad='small' align='center' justify='center' background={{ color: 'brand' }}>

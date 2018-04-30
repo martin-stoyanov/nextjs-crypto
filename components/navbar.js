@@ -10,7 +10,7 @@ const Navbar = props => (
         alt='btc logo'
         width='45px'
         height='45px'
-      />&nbsp;&nbsp;      
+      />&nbsp;&nbsp;
       <Heading margin='none'>{props.title}</Heading>
     </Box>
     <Box direction='row' gap='small'>

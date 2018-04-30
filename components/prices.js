@@ -4,7 +4,7 @@ import { CardTitle, CardContent } from 'grommet-controls/components/Card';
 import SinglePrice from './singlePrice';
 import HistoricalPrices from './historicalprices';
 
-const currencies=["USD","EUR","GBP"];
+const currencies = ['USD', 'EUR', 'GBP'];
 class Prices extends React.Component {
   constructor(props) {
     super(props);
@@ -23,12 +23,13 @@ class Prices extends React.Component {
             <SinglePrice currency={currency} bpi={this.props.bpi} />
             <Box direction='row' justify='left'>
               <Paragraph>Currency: &nbsp;&nbsp;</Paragraph>
-              <Select 
+              <Select
                 options={currencies}
-                value={currency}  
+                value={currency}
                 onChange={event => this.setState({
                   currency: event.value,
-                })}/>
+                })}
+              />
             </Box>
           </CardContent>
         </Card>

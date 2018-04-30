@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grommet } from 'grommet';
-import { Select } from 'grommet-controls'
 import { materiallight } from 'grommet-controls/themes';
 import Head from 'next/head';
 import Navbar from './navbar';
