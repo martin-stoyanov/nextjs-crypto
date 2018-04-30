@@ -1,4 +1,5 @@
-import { Box, Table, TableHeader, TableCell, TableBody, TableRow } from 'grommet';
+import { Box, Table } from 'grommet';
+import { TableHeader, TableCell, TableBody, TableRow } from 'grommet/components/Table';
 import {Line} from 'react-chartjs-2';
 
 class HistoricalPrices extends React.Component {
