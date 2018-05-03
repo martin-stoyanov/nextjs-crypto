@@ -2,12 +2,11 @@ import React from 'react';
 import fetch from 'isomorphic-unfetch';
 import { Box } from 'grommet';
 import Layout from '../components/layout';
-import Prices from '../components/prices';
 
-const Index = props => (
+const Index = () => (
   <Layout title='Bitprice'>
     <Box direction='column' align='center'>
-      <Prices bpi={props.btc} currency={props.currency} btcHist={props.btcHist} />
+      <p>hi</p>
     </Box>
   </Layout>
 );
