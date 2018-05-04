@@ -14,18 +14,16 @@ class Prices extends React.Component {
     const data = await res.json();
     const res1 = await fetch('https://api.coindesk.com/v1/bpi/historical/close.json');
     const histData = await res1.json();
+
     return {
       btc: data,
       btcHist: histData,
-      currency: currency.toUpperCase(),
+      currency,
     };
   }
   onChangeCurrency = (event) => {
     // link to prices/currency
-    console.log(event.value);
-    console.log(`/prices/${event.value}`);
     Router.push(`/prices/${event.value}`);
-    // Router.push(`/prices/${event.value}`);
   }
   render() {
     const { currency } = this.props;

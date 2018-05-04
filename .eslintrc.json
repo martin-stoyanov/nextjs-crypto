@@ -31,6 +31,7 @@
     "comma-dangle": ["error", "always-multiline"],
     "function-paren-newline": ["error", "consistent"],
     "jsx-quotes": ["error", "prefer-single"],
+    "no-param-reassign": 0,
     "no-console": 0,
     "quote-props": ["error", "consistent"],
     "react/forbid-prop-types": 0,

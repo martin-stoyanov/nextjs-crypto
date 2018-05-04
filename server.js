@@ -11,19 +11,14 @@ app.prepare()
     const server = express();
     // list of currencues
     const currencies = ['usd', 'eur', 'gbp'];
-    server.get('/prices/:currency', (req, res) => {
+    server.get('/prices/:currency?', (req, res) => {
       // check if not in list
-      if (!currencies.includes(req.params.currency.toLowerCase())) {
-        console.log('unavailable currency');
-        res.redirect('/prices/usd');
+      if (req.params.currency === undefined ||
+         !currencies.includes(req.params.currency.toLowerCase())) {
+        res.redirect('/prices/USD');
       } else {
-        app.render(req, res, '/prices', { currency: req.params.currency });
-        console.log('hello there');
-        console.log(`req: ${req.params.currency}; res: ${res}`);
+        app.render(req, res, '/prices', { currency: req.params.currency.toUpperCase() });
       }
-    });
-    server.get('/prices', (req, res) => {
-      res.redirect('/prices/usd');
     });
     server.get('*', (req, res) => handle(req, res));
 
