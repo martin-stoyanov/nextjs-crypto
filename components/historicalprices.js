@@ -6,8 +6,8 @@ class HistoricalPrices extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortedBpi: props.btcHist.bpi,
-      chartData: [],
+      sortedBpi: [],
+      chartData: {},
     };
   }
 

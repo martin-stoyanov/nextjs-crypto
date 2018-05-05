@@ -1,7 +1,6 @@
 import { Box, Paragraph } from 'grommet';
 import { Card, Select } from 'grommet-controls';
 import { CardTitle, CardContent } from 'grommet-controls/components/Card';
-import fetch from 'isomorphic-unfetch';
 import Router from 'next/router';
 import SinglePrice from '../components/singlePrice';
 import HistoricalPrices from '../components/historicalprices';
@@ -10,14 +9,7 @@ import Layout from '../components/layout';
 const currencies = ['USD', 'EUR', 'GBP'];
 class Prices extends React.Component {
   static async getInitialProps({ query: { currency } }) {
-    const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
-    const data = await res.json();
-    const res1 = await fetch('https://api.coindesk.com/v1/bpi/historical/close.json');
-    const histData = await res1.json();
-
     return {
-      btc: data,
-      btcHist: histData,
       currency,
     };
   }
@@ -33,7 +25,7 @@ class Prices extends React.Component {
           <Card size={{ width: 'xlarge' }}>
             <CardTitle border='bottom'>Welcome to BitPrice!</CardTitle>
             <CardContent pad='small'>
-              <SinglePrice currency={currency} bpi={this.props.btc} />
+              <SinglePrice currency={currency} />
               <Box direction='row' justify='left'>
                 <Paragraph>Currency: &nbsp;&nbsp;</Paragraph>
                 <Select
@@ -49,7 +41,7 @@ class Prices extends React.Component {
           <Card size={{ width: 'xlarge' }}>
             <CardTitle border='bottom'>Historical Prices</CardTitle>
             <CardContent pad='small'>
-              <HistoricalPrices btcHist={this.props.btcHist} currency={currency} />
+              <HistoricalPrices currency={currency} />
             </CardContent>
           </Card>
         </Box>

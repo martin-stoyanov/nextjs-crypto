@@ -7,14 +7,14 @@ import React from 'react';
 class SinglePrice extends React.Component {
   constructor(props) {
     super(props);
-    const { bpi, currency } = props;
     this.state = {
-      price: bpi.bpi[currency].rate,
-      time: bpi.time.updated,
+      price: '',
+      time: '',
     };
   }
 
   componentDidMount() {
+    this.getPrice();
     setInterval(this.getPrice, 60000);
   }
 
