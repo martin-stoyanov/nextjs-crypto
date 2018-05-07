@@ -14,7 +14,7 @@ const Navbar = props => (
       <Heading margin='none'>{props.title}</Heading>
     </Box>
     <Box direction='row' gap='small'>
-      <Link href='/'><Button>Home</Button></Link>
+      <Link href='/prices/USD'><Button>Home</Button></Link>
       <Link href='/about'><Button>About</Button></Link>
     </Box>
   </Box>
